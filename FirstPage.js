@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import React, { useCallback, useState } from 'react';
 import { Slider } from '@miblanchard/react-native-slider';
 import { PanGestureHandler } from 'react-native-gesture-handler';
@@ -14,8 +14,8 @@ const FirstPage = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <View style={{ height: 20 }} />
+    <ScrollView style={styles.container}>
+      <View style={{ height: 200 }} />
       <PanGestureHandler onGestureEvent={() => { }}>
         <Slider value={value} onValueChange={onValueChange} />
       </PanGestureHandler>
@@ -40,7 +40,7 @@ const FirstPage = () => {
         <Slider value={value} onValueChange={onValueChange} />
       </PanGestureHandler>
       <Text>Value: {value}</Text>
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 10,
     marginRight: 10,
-    alignItems: 'stretch',
-    justifyContent: 'center',
+    // alignItems: 'stretch',
+    // justifyContent: 'center',
   },
 });
 

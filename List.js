@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 
+// https://juejin.cn/post/7219365179573600311
 function randomInRange(from, to) {
   var r = Math.random();
   return Math.floor(r * (to - from) + from);
@@ -49,7 +50,7 @@ for (let i = 0; i < 36; i++) {
 
 const Item = ({ item, index }) => {
   return (
-    <View style={styles.item}>
+    <View style={styles.item} pointerEvents="none">
       <Text style={styles.title}>{index}</Text>
       <Text style={styles.title}>{item[0]}</Text>
       <Text style={styles.title}>{item[1]}</Text>
@@ -67,9 +68,11 @@ const List = () => (
       sections={DATA}
       keyExtractor={(item, index) => item + index}
       renderItem={({ item, index }) => <Item item={item} index={index} />}
-      initialNumToRender={36}
+      initialNumToRender={24}
       maxToRenderPerBatch={48}
       windowSize={21}
+      stickySectionHeadersEnabled
+      CellRendererComponent={props => <View {...props} pointerEvents="none" />}
       renderSectionHeader={({ section: { title } }) => (
         <View style={styles.header}>
           <Text style={styles.headerText}>{title}</Text>
